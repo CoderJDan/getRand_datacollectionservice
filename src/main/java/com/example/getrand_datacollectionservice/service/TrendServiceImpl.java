@@ -138,4 +138,32 @@ public class TrendServiceImpl implements TrendService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void updateRT() {
+        try {
+            String jsonResponse = apiService.getRealTimeTrand("KR", "google_trends_trending_now", apiKey);
+            JsonNode rootNode = mapper.readTree(jsonResponse);
+            JsonNode trendingSearchesNode = rootNode.path("trending_searches");
+            List<RealTimeTrendDTO> trendingSearches = new ArrayList<>();
+            if (trendingSearchesNode != null) {
+                int limit = Math.min(trendingSearchesNode.size(), 10);
+                int count = 0;
+                for (JsonNode node : trendingSearchesNode) {
+                    RealTimeTrendDTO entity = new RealTimeTrendDTO();
+                    entity.setQuery(node.get("query").asText());
+                    entity.setSearchVolume(node.get("search_volume").asInt());
+                    entity.setIncreasePercentage(node.get("increase_percentage").asInt());
+                    System.out.println(entity);
+                    trendingSearches.add(entity);
+                    count++;
+                    if (count == limit) break;
+                }
+            }
+            dao.deleteAll();
+            dao.insertRtt(trendingSearches);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

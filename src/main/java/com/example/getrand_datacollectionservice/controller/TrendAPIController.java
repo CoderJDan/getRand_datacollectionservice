@@ -3,6 +3,7 @@ package com.example.getrand_datacollectionservice.controller;
 import com.example.getrand_datacollectionservice.service.TrendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +33,12 @@ public class TrendAPIController {
     @GetMapping("/relatedTopics")
     public String relatedTopics() {
         service.fetchRelatedTopics();
+        return "ok";
+    }
+
+    @PostMapping("/updaterealtime")
+    public String updateRealtime() {
+        service.updateRT();
         return "ok";
     }
 }

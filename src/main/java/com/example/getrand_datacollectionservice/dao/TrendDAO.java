@@ -8,9 +8,11 @@ import com.example.getrand_datacollectionservice.dto.RelatedTopicsDTO;
 import java.util.List;
 
 public interface TrendDAO {
+    void insertDOY(List<DefaultPastOYDTO> dto);
     void insertRtt(List<RealTimeTrendDTO> dto);
     void insertRq(List<RelatedQueriesDTO> dto);
     void insertRt(List<RelatedTopicsDTO> dto);
-    void insertDOY(List<DefaultPastOYDTO> dto);
+    void deleteAll();
+
 
 }
