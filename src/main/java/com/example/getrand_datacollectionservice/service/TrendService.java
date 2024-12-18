@@ -5,4 +5,5 @@ public interface TrendService {
     void fetchRealTimeTrend();
     void fetchRelatedQueries();
     void fetchRelatedTopics();
+    void updateRT();
 }

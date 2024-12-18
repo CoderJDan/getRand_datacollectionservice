@@ -22,6 +22,11 @@ public class TrendDAOImpl implements TrendDAO {
     private final DefaultPastOYRepository defaultPastOYRepository;
 
     @Override
+    public void insertDOY(List<DefaultPastOYDTO> dtos) {
+        defaultPastOYRepository.saveAll(dtos);
+    }
+
+    @Override
     public void insertRtt(List<RealTimeTrendDTO> dtos) {
         rtRepository.saveAll(dtos);
     }
@@ -37,7 +42,7 @@ public class TrendDAOImpl implements TrendDAO {
     }
 
     @Override
-    public void insertDOY(List<DefaultPastOYDTO> dtos) {
-        defaultPastOYRepository.saveAll(dtos);
+    public void deleteAll() {
+        rtRepository.deleteAll();
     }
 }
