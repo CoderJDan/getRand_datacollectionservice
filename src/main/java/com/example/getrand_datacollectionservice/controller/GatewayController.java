@@ -1,4 +1,4 @@
-package com.example.getrand_datacollectionservice;
+package com.example.getrand_datacollectionservice.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
