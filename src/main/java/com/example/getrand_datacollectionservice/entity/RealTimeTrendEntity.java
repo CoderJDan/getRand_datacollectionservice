@@ -1,4 +1,4 @@
-package com.example.getrand_datacollectionservice.dto;
+package com.example.getrand_datacollectionservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RealTimeTrendDTO {
+public class RealTimeTrendEntity extends PublicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String query;
     private int searchVolume;

@@ -1,4 +1,4 @@
-package com.example.getrand_datacollectionservice.dto;
+package com.example.getrand_datacollectionservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "related_topics")
+@Table(name = "related_queries")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RelatedTopicsDTO {
+public class RelatedQueriesEntity extends PublicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String title;
-    private String type;
+    private Long id;
+    private String query;
     private String value;
     private int extractedValue;
 }
