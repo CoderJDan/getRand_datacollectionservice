@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datacollectionservice
+  namespace: getrand
+  labels:
+    service: datacollectionservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: datacollectionservice
+  template:
+    metadata:
+      labels:
+        service: datacollectionservice
+    spec:
+      containers:
+        - name: datacollection
+          image: jangdaniel/getrand-datacollection-service:v1.0.5
+          ports:
+            - containerPort: 5003
